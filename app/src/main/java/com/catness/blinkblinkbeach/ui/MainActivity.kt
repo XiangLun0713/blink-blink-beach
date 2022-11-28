@@ -1,7 +1,8 @@
-package com.catness.blinkblinkbeach
+package com.catness.blinkblinkbeach.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.catness.blinkblinkbeach.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

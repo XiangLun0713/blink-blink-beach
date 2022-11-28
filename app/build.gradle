@@ -1,7 +1,10 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-kapt'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
     id 'com.google.gms.google-services'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -34,13 +37,32 @@ android {
 }
 
 dependencies {
+    // jetpack navigation dependencies
+    implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+    // firebase dependencies
     implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+    // fragment
+    implementation "androidx.fragment:fragment-ktx:1.5.4"
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:2.44"
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
+    kapt "com.google.dagger:hilt-compiler:2.44"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    // basic android dependencies
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
-    implementation platform('com.google.firebase:firebase-bom:31.1.0')
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+}
+
+kapt {
+    correctErrorTypes true
 }

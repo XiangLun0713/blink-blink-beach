@@ -9,6 +9,29 @@
             android:id="@+id/signInFragment"
             android:name="com.catness.blinkblinkbeach.ui.signIn.SignInFragment"
             android:label="fragment_sign_in"
-            tools:layout="@layout/fragment_sign_in" />
+            tools:layout="@layout/fragment_sign_in" >
+        <action
+                android:id="@+id/action_signInFragment_to_registerFragment"
+                app:destination="@id/registerFragment" />
+        <action
+                android:id="@+id/action_signInFragment_to_homeFragment"
+                app:destination="@id/homeFragment"
+                app:popUpTo="@id/signInFragment"
+                app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+            android:id="@+id/registerFragment"
+            android:name="com.catness.blinkblinkbeach.ui.register.RegisterFragment"
+            android:label="fragment_register"
+            tools:layout="@layout/fragment_register" />
+    <fragment
+            android:id="@+id/homeFragment"
+            android:name="com.catness.blinkblinkbeach.ui.home.HomeFragment"
+            android:label="fragment_home"
+            tools:layout="@layout/fragment_home" />
+    <action
+            android:id="@+id/action_global_signInFragment2"
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/nav_graph" />
 
 </navigation>

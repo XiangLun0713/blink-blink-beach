@@ -15,16 +15,17 @@ class AuthRepositoryImpl @Inject constructor(
         firebaseAuth.signOut()
     }
 
-    override suspend fun register(email: String, password: String): AuthState {
-        if (email.isEmpty() || password.isEmpty()) return AuthState.Error("Register failed: Please ensure that you've entered both the email and password.")
-        if (!isValidEmailAddress(email.trim())) return AuthState.Error("Register failed: Invalid email address.")
+    override suspend fun signUp(username: String, email: String, password: String): AuthState {
+        if (email.isEmpty() || password.isEmpty()) return AuthState.Error("Sign up failed: Please ensure that you've entered both the email and password.")
+        if (!isValidEmailAddress(email.trim())) return AuthState.Error("Sign up failed: Invalid email address.")
 
         return try {
             firebaseAuth.createUserWithEmailAndPassword(email.trim(), password).await()
+            // todo add user into collection
             AuthState.Success
         } catch (e: Exception) {
-            // register fails
-            AuthState.Error("Register failed: ${e.message}")
+            // sign up fails
+            AuthState.Error("Sign up failed: ${e.message}")
         }
     }
 

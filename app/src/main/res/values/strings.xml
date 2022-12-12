@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">BlinkBlinkBeach</string>
-    <string name="email">Email</string>
+    <string name="email_address">Email address</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
-    <string name="register">Register</string>
     <string name="sign_in">Sign In</string>
+    <string name="sign_in_with_underline"><u>Sign In</u></string>
+    <string name="signing_in">Signing in…</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="doesn_t_have_an_account">Doesn\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_with_underline"><u>Sign Up</u></string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="username">Username</string>
+    <string name="blink_blink_beach_logo">Blink Blink Beach logo</string>
 </resources>

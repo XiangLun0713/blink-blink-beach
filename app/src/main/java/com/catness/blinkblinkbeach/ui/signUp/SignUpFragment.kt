@@ -1,4 +1,4 @@
-package com.catness.blinkblinkbeach.ui.signIn
+package com.catness.blinkblinkbeach.ui.signUp
 
 import android.os.Bundle
 import android.view.View
@@ -10,47 +10,46 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.catness.blinkblinkbeach.R
 import com.catness.blinkblinkbeach.data.repositories.auth.AuthState
-import com.catness.blinkblinkbeach.databinding.FragmentSignInBinding
+import com.catness.blinkblinkbeach.databinding.FragmentSignUpBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SignInFragment : Fragment(R.layout.fragment_sign_in) {
+class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
-    private val viewModel: SignInViewModel by viewModels()
+    private val viewModel: SignUpViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentSignInBinding.bind(view)
+        val binding = FragmentSignUpBinding.bind(view)
 
         binding.apply {
-            signInButton.setOnClickListener {
-                viewModel.onSignInButtonClick()
+
+            signUpUsernameEditText.doOnTextChanged { text, _, _, _ ->
+                viewModel.username.value = text?.toString() ?: ""
             }
 
-            signInEmailEditText.doOnTextChanged { text, _, _, _ ->
+            signUpEmailEditText.doOnTextChanged { text, _, _, _ ->
                 viewModel.email.value = text?.toString() ?: ""
             }
 
-            signInPasswordEditText.doOnTextChanged { text, _, _, _ ->
+            signUpPasswordEditText.doOnTextChanged { text, _, _, _ ->
                 viewModel.password.value = text?.toString() ?: ""
             }
 
-            forgetPasswordButton.setOnClickListener {
-                // todo trigger dialogue box and ask for email
+            signUpButton.setOnClickListener {
+                viewModel.onSignUpButtonClick()
             }
 
-            navigateToSignUpButton.setOnClickListener {
-                viewModel.onNavigateToSignUpButtonClick()
+            navigateToSignInButton.setOnClickListener {
+                viewModel.onNavigateToSignInButtonClick()
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                viewModel.signInEvent.collect { event ->
+                viewModel.signUpEvent.collect { event ->
                     when (event) {
-                        is SignInViewModel.SignInEvent.NavigateToSignUpFragment -> {
-                            val action =
-                                SignInFragmentDirections.actionSignInFragmentToSignUpFragment()
-                            findNavController().navigate(action)
+                        is SignUpViewModel.SignUpEvent.NavigateToSignInFragment -> {
+                            findNavController().navigateUp()
                         }
                     }
                 }
@@ -61,25 +60,22 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                     when (event) {
                         is AuthState.Error -> {
                             // hide the circular progress indicator
-                            signInProgressCardView.visibility = View.INVISIBLE
+                            signUpProgressCardView.visibility = View.INVISIBLE
                             // display error message as toast message
                             Toast.makeText(
-                                this@SignInFragment.requireActivity(),
+                                this@SignUpFragment.requireActivity(),
                                 event.message,
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                         is AuthState.Loading -> {
                             // show the circular progress indicator
-                            signInProgressCardView.visibility = View.VISIBLE
+                            signUpProgressCardView.visibility = View.VISIBLE
                         }
                         is AuthState.Success -> {
                             // hide the circular progress indicator
-                            signInProgressCardView.visibility = View.INVISIBLE
-                            // navigate to the main page
-                            val action =
-                                SignInFragmentDirections.actionSignInFragmentToHomeFragment()
-                            findNavController().navigate(action)
+                            signUpProgressCardView.visibility = View.INVISIBLE
+                            findNavController().navigateUp()
                         }
                     }
                 }

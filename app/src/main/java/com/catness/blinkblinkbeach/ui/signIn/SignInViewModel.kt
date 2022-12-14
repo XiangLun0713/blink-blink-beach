@@ -35,7 +35,21 @@ class SignInViewModel @Inject constructor(
         signInEventChannel.send(SignInEvent.NavigateToSignUpFragment)
     }
 
+    fun onSendForgetEmailButtonClick(email: String) = viewModelScope.launch {
+        val result = repository.sendResetPasswordEmail(email)
+        signInEventChannel.send(
+            SignInEvent.ShowToastMessage(
+                if (result != null) {
+                    result
+                } else {
+                    "Reset password email sent successfully."
+                }
+            )
+        )
+    }
+
     sealed class SignInEvent {
         object NavigateToSignUpFragment : SignInEvent()
+        data class ShowToastMessage(val message: String) : SignInEvent()
     }
 }

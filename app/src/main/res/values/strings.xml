@@ -17,4 +17,8 @@
     <string name="please_enter_your_email_we_will_send_you_an_email_so_you_can_reset_your_password">Please enter your email. We will send you an email so you can reset your password..</string>
     <string name="cancel" tools:ignore="ButtonCase">cancel</string>
     <string name="send_me_the_email">Send me the email</string>
+    <string name="home_button">home_button</string>
+    <string name="report_button">report_button</string>
+    <string name="notification_button">notification_button</string>
+    <string name="profile_button">profile_button</string>
 </resources>

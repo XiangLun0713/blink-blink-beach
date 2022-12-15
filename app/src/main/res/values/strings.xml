@@ -21,4 +21,9 @@
     <string name="details">Details:</string>
     <string name="register">Register</string>
     <string name="a_map_showing_the_location_of_the_event">A map showing the location of the event</string>
+    <string name="home">Home</string>
+    <string name="report">Report</string>
+    <string name="notification">Notification</string>
+    <string name="profile">Profile</string>
+
 </resources>

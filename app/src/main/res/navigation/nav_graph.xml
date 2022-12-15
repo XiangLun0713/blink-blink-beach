@@ -41,5 +41,14 @@
             android:id="@+id/action_global_signInFragment"
             app:destination="@id/signInFragment"
             app:popUpTo="@id/nav_graph" />
+    <fragment
+            android:id="@+id/eventDetailFragment"
+            android:name="com.catness.blinkblinkbeach.ui.eventDetail.EventDetailFragment"
+            android:label="fragment_event_detail"
+            tools:layout="@layout/fragment_event_detail" >
+        <argument
+                android:name="event"
+                app:argType="com.catness.blinkblinkbeach.data.model.Event" />
+    </fragment>
 
 </navigation>

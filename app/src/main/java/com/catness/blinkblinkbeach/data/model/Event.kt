@@ -10,12 +10,11 @@ data class Event(
     val eventID: String,
     val longitude: Double,
     val latitude: Double,
+    val address: String,
     val name: String,
     val date: String = DateFormat.getDateTimeInstance().format(System.currentTimeMillis()),
-    val pictureUrl: String,
-    val seriousness: Int,
+    val imageUrl: String,
     val status: EventStatus,
-    val description: String,
+    val detail: String,
     val participantIDs: List<String>,
-    val leaderID: String
 ) : Parcelable

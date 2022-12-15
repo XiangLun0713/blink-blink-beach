@@ -17,4 +17,8 @@
     <string name="please_enter_your_email_we_will_send_you_an_email_so_you_can_reset_your_password">Please enter your email. We will send you an email so you can reset your password..</string>
     <string name="cancel" tools:ignore="ButtonCase">cancel</string>
     <string name="send_me_the_email">Send me the email</string>
+    <string name="polluted_beach_image_provided_by_reporter">polluted beach image provided by reporter</string>
+    <string name="details">Details:</string>
+    <string name="register">Register</string>
+    <string name="a_map_showing_the_location_of_the_event">A map showing the location of the event</string>
 </resources>

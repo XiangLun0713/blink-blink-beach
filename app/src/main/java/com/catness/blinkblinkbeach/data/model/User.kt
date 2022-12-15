@@ -8,4 +8,6 @@ data class User(
     val id: String,
     val username: String,
     val email: String,
+    val profileImageUrl: String,
+    val eventsParticipated: List<String>
 ) : Parcelable

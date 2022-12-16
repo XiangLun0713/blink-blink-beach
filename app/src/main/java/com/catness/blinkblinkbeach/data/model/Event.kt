@@ -13,6 +13,7 @@ data class Event(
     val address: String,
     val name: String,
     val date: String = DateFormat.getDateTimeInstance().format(System.currentTimeMillis()),
+    val time: String,
     val imageUrl: String,
     val status: EventStatus,
     val detail: String,

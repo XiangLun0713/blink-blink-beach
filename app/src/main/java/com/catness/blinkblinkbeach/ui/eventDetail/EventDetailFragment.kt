@@ -45,6 +45,7 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
             viewModel.loadEventImage(eventImageView, event.imageUrl)
             eventHeaderTitleTextView.text = event.name
             eventDateTextView.text = event.date
+            eventTimeTextView.text = event.time
             eventTitleTextView.text = event.name
             eventAddressTextView.text = event.address
             eventDetailTextView.text = event.detail

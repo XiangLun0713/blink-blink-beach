@@ -79,6 +79,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Date: 23 Dec 2022"
+                    android:fontFamily="@font/quicksand_regular" />
+
+            <TextView
+                    android:id="@+id/event_time_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Time: 5pm - 7pm"
                     android:fontFamily="@font/quicksand_regular"
                     android:layout_marginBottom="20dp" />
 

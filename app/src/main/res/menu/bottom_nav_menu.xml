@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home"
-        android:enabled="true"
-        android:icon="@drawable/home"
-        android:title="@string/home" />
+            android:id="@+id/homeFragment"
+            android:enabled="true"
+            android:icon="@drawable/home"
+            android:contentDescription="@string/home"
+            android:title="@string/home" />
     <item
-        android:id="@+id/report"
-        android:enabled="true"
-        android:icon="@drawable/report"
-        android:title="@string/report" />
+            android:id="@+id/reportFragment"
+            android:enabled="true"
+            android:icon="@drawable/report"
+            android:contentDescription="@string/report"
+            android:title="@string/report" />
     <item
-        android:id="@+id/notification"
-        android:enabled="true"
-        android:icon="@drawable/notification"
-        android:title="@string/notification" />
+            android:id="@+id/notificationFragment"
+            android:enabled="true"
+            android:icon="@drawable/notification"
+            android:contentDescription="@string/notification"
+            android:title="@string/notification" />
     <item
-        android:id="@+id/profile"
-        android:enabled="true"
-        android:icon="@drawable/profile"
-        android:title="@string/profile" />
+            android:id="@+id/profileFragment"
+            android:enabled="true"
+            android:icon="@drawable/profile"
+            android:contentDescription="@string/profile"
+            android:title="@string/profile" />
 </menu>

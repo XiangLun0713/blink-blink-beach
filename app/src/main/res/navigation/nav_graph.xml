@@ -35,7 +35,7 @@
     <fragment
             android:id="@+id/homeFragment"
             android:name="com.catness.blinkblinkbeach.ui.home.HomeFragment"
-            android:label="fragment_home"
+            android:label="Home"
             tools:layout="@layout/fragment_home" />
     <action
             android:id="@+id/action_global_signInFragment"
@@ -44,17 +44,17 @@
     <fragment
             android:id="@+id/reportFragment"
             android:name="com.catness.blinkblinkbeach.ui.report.ReportFragment"
-            android:label="fragment_report"
+            android:label="Report"
             tools:layout="@layout/fragment_report" />
     <fragment
             android:id="@+id/notificationFragment"
             android:name="com.catness.blinkblinkbeach.ui.notification.NotificationFragment"
-            android:label="fragment_notification"
+            android:label="Notification"
             tools:layout="@layout/fragment_notification" />
     <fragment
             android:id="@+id/profileFragment"
             android:name="com.catness.blinkblinkbeach.ui.profile.ProfileFragment"
-            android:label="fragment_profile"
+            android:label="Profile"
             tools:layout="@layout/fragment_profile" />
     <fragment
             android:id="@+id/eventDetailFragment"

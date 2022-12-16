@@ -25,5 +25,9 @@
     <string name="report">Report</string>
     <string name="notification">Notification</string>
     <string name="profile">Profile</string>
+    <string name="log_out">Log out</string>
+    <string name="be_a_part_of_defending_our_planet">Be A Part of\nDefending Our\nPlanet</string>
+    <string name="events">Events</string>
+    <string name="view_all"><u>View All</u></string>
 
 </resources>

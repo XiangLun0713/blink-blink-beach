@@ -18,7 +18,8 @@
     <string name="cancel" tools:ignore="ButtonCase">cancel</string>
     <string name="send_me_the_email">Send me the email</string>
     <string name="polluted_beach_image_provided_by_reporter">polluted beach image provided by reporter</string>
-    <string name="details">Details:</string>
+    <string name="details_with_comma">Details:</string>
+    <string name="details">Details</string>
     <string name="register">Register</string>
     <string name="a_map_showing_the_location_of_the_event">A map showing the location of the event</string>
     <string name="home">Home</string>
@@ -29,5 +30,9 @@
     <string name="be_a_part_of_defending_our_planet">Be A Part of\nDefending Our\nPlanet</string>
     <string name="events">Events</string>
     <string name="view_all"><u>View All</u></string>
-
+    <string name="picture_for_the_event">Picture for the event</string>
+    <string name="date_with_comma">Date: %1$s</string>
+    <string name="participant_joined">%1$d Participants joined</string>
+    <string name="location_with_comma">Location: %1$s</string>
+    <string name="time_with_comma">Time: %1$s</string>
 </resources>

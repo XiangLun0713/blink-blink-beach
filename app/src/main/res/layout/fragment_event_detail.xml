@@ -46,6 +46,8 @@
                     android:id="@+id/event_image_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
                     android:contentDescription="@string/polluted_beach_image_provided_by_reporter"
                     tools:src="@drawable/bbb_logo_green" />
 
@@ -108,7 +110,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/details"
+                    android:text="@string/details_with_comma"
                     android:fontFamily="@font/quicksand_regular" />
 
             <TextView

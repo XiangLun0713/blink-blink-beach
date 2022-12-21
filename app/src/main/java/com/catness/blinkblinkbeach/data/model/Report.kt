@@ -11,7 +11,7 @@ data class Report(
     val longitude: Double,
     val latitude: Double,
     val date: String = DateFormat.getDateTimeInstance().format(System.currentTimeMillis()),
-    val pictureUrl: String,
+    val imageUrl: String,
     val status: ReportStatus,
     val reporterID: String,
 ) : Parcelable

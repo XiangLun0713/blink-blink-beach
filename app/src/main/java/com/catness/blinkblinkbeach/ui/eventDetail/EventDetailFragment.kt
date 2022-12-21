@@ -19,6 +19,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.*
 
 @AndroidEntryPoint
 class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReadyCallback {
@@ -44,11 +46,17 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
         binding.apply {
             viewModel.loadEventImage(eventImageView, event.imageUrl)
             eventHeaderTitleTextView.text = event.name
-            eventDateTextView.text = event.date
-            eventTimeTextView.text = event.time
+            eventDateTextView.text = requireContext().resources.getString(
+                R.string.date_with_comma,
+                getDateFromMillis(event.startTimeMillis)
+            )
+            eventTimeTextView.text = requireContext().resources.getString(
+                R.string.time_with_comma,
+                getEventTime(event.startTimeMillis, event.endTimeMillis)
+            )
             eventTitleTextView.text = event.name
             eventAddressTextView.text = event.address
-            eventDetailTextView.text = event.detail
+            eventDetailTextView.text = event.detail.replace("\\n", "\n")
             eventRegisterButton.setOnClickListener {
                 viewModel.onRegisterEventButtonClick(event.eventID)
             }
@@ -86,6 +94,27 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
         }
     }
 
+    private fun getDateFromMillis(millis: Long): String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = millis
+        val dateFormat = SimpleDateFormat("dd MMM yyyy")
+        return dateFormat.format(calendar.time)
+    }
+
+    private fun getEventTime(startTime: Long, endTime: Long) =
+        "${convertMillisecondsToTimeString(startTime)} - ${convertMillisecondsToTimeString(endTime)}"
+
+    private fun convertMillisecondsToTimeString(milliseconds: Long): String {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = milliseconds
+        val amPm = if (calendar[Calendar.AM_PM] == Calendar.AM) "AM" else "PM"
+
+        val hours = calendar[Calendar.HOUR]
+        val minutes = calendar[Calendar.MINUTE]
+
+        return "$hours:${minutes.toString().padStart(2, '0')} $amPm"
+    }
+
     override fun onMapReady(p0: GoogleMap) {
         p0.let { map ->
             // temporary disable the scroll listener of the scroll view when the user is interacting with the map
@@ -100,7 +129,7 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
             val cameraUpdate = CameraUpdateFactory.newLatLngZoom(position, 15f)
             val markerOptions = MarkerOptions()
                 .position(position)
-                .title("Beach Cleaning Event")
+                .title(event.name)
             // add marker on map
             map.addMarker(markerOptions)
             // move the camera to focus on the marker

@@ -1,21 +1,21 @@
 package com.catness.blinkblinkbeach.data.model
 
 import android.os.Parcelable
-import com.catness.blinkblinkbeach.utilities.EventStatus
 import kotlinx.android.parcel.Parcelize
 import java.text.DateFormat
 
 @Parcelize
 data class Event(
-    val eventID: String,
-    val longitude: Double,
-    val latitude: Double,
-    val address: String,
-    val name: String,
-    val date: String = DateFormat.getDateTimeInstance().format(System.currentTimeMillis()),
-    val time: String,
-    val imageUrl: String,
-    val status: EventStatus,
-    val detail: String,
-    val participantIDs: List<String>,
+    val eventID: String = "",
+    val longitude: Double = 0.0,
+    val latitude: Double = 0.0,
+    val address: String = "",
+    val name: String = "",
+    val dateOfCreation: String = DateFormat.getDateTimeInstance()
+        .format(System.currentTimeMillis()),
+    val startTimeMillis: Long = 0,
+    val endTimeMillis: Long = 0,
+    val imageUrl: String = "",
+    val detail: String = "",
+    val participantIDs: List<String> = mutableListOf(),
 ) : Parcelable

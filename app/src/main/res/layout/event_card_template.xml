@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/event_card_bg"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginHorizontal="15dp"
+        android:padding="15dp">
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_marginBottom="10dp">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+            <ImageView
+                    android:id="@+id/event_card_header_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/picture_for_the_event"
+                    android:scaleType="centerCrop"
+                    android:layout_alignParentBottom="true"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/bbb_logo_green" />
+
+            <TextView
+                    android:id="@+id/event_card_num_of_participant_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="5dp"
+                    android:textAlignment="center"
+                    tools:text="111 Participants joined"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/transparent_green"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/quicksand_regular" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+            android:id="@+id/event_card_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Lanslot Beach Cleaning 2022"
+            android:textColor="@color/white"
+            android:fontFamily="@font/quicksand_regular"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp" />
+
+    <TextView
+            android:id="@+id/event_card_date_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Date: 25 December 2022"
+            android:fontFamily="@font/quicksand_regular"
+            android:textColor="@color/white"
+            android:layout_marginBottom="5dp" />
+
+    <TextView
+            android:id="@+id/event_card_location_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Location: Lanslot Beach, Raussia"
+            android:fontFamily="@font/quicksand_regular"
+            android:textColor="@color/white"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginBottom="10dp" />
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/event_card_details_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/button_on_primary"
+            android:textColor="@color/md_theme_light_onSecondary"
+            android:fontFamily="@font/quicksand_regular" />
+
+</LinearLayout>

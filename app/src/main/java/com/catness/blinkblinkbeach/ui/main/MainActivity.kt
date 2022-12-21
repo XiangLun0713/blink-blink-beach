@@ -3,9 +3,13 @@ package com.catness.blinkblinkbeach.ui.main
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -15,6 +19,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.catness.blinkblinkbeach.NavGraphDirections
 import com.catness.blinkblinkbeach.R
 import com.catness.blinkblinkbeach.databinding.ActivityMainBinding
+import com.catness.blinkblinkbeach.ui.home.HomeFragment
+import com.catness.blinkblinkbeach.ui.notification.NotificationFragment
+import com.catness.blinkblinkbeach.ui.profile.ProfileFragment
+import com.catness.blinkblinkbeach.ui.report.ReportFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,7 +46,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment,
                 R.id.reportFragment,
                 R.id.notificationFragment,
-                R.id.profileFragment
+                R.id.profileFragment,
+                R.id.eventDetailFragment
             )
         )
 
@@ -50,6 +59,42 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
+
+        binding.apply {
+            supportFragmentManager.registerFragmentLifecycleCallbacks(object :
+                FragmentManager.FragmentLifecycleCallbacks() {
+                override fun onFragmentViewCreated(
+                    fm: FragmentManager,
+                    f: Fragment,
+                    v: View,
+                    savedInstanceState: Bundle?
+                ) {
+                    when (f) {
+                        is HomeFragment -> {
+                            topAppBar.isVisible = true
+                            bottomNavigationMenu.isVisible = true
+                        }
+                        is NotificationFragment -> {
+                            topAppBar.isVisible = true
+                            bottomNavigationMenu.isVisible = true
+                        }
+                        is ReportFragment -> {
+                            topAppBar.isVisible = true
+                            bottomNavigationMenu.isVisible = true
+                        }
+                        is ProfileFragment -> {
+                            topAppBar.isVisible = true
+                            bottomNavigationMenu.isVisible = true
+                        }
+                        else -> {
+                            topAppBar.isVisible = false
+                            bottomNavigationMenu.isVisible = false
+                        }
+                    }
+                }
+            }, true)
+        }
+
 
         viewModel.isUserAuthenticated.observe(this) { isUserAuthenticated ->
             if (isUserAuthenticated == true) {
@@ -63,14 +108,8 @@ class MainActivity : AppCompatActivity() {
         // apply navigation on the action bar
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        // set up top app bar visibility listener
-        viewModel.setVisibilityTopAppBar(navController, binding.topAppBar)
-
         // set up bottom nav bar
         NavigationUI.setupWithNavController(binding.bottomNavigationMenu, navController)
-
-        // set up bottom nav visibility listener
-        viewModel.setVisibilityBottomNavBar(navController, binding.bottomNavigationMenu)
     }
 
     override fun onSupportNavigateUp(): Boolean {

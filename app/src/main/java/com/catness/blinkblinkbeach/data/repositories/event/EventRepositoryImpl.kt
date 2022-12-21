@@ -31,12 +31,13 @@ class EventRepositoryImpl @Inject constructor(
             // add the user's id to the event's participant list
             val eventSnapshot = eventsCollection.document(eventId).get().await()
             val event = eventSnapshot.toObject(Event::class.java) ?: throw Exception()
+            if (event.participantIDs.contains(uid)) throw Exception("You already registered in this event!")
             val newEvent = event.copy(participantIDs = event.participantIDs + uid)
-            eventsCollection.document(uid).set(newEvent).await()
+            eventsCollection.document(event.eventID).set(newEvent).await()
 
             APIState.Success
         } catch (e: Exception) {
-            APIState.Error("Register event failed: Please try again later.")
+            APIState.Error("Register event failed: ${e.message}")
         }
     }
 }

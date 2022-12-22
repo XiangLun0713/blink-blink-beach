@@ -6,3 +6,21 @@ package com.catness.blinkblinkbeach.utilities
  */
 val <T> T.exhaustive: T
     get() = this
+
+/**
+ * Used to represent states when dealing with API
+ */
+sealed class APIState {
+    object Loading : APIState()
+    object Success : APIState()
+    data class Error(val message: String? = null) : APIState()
+}
+
+/**
+ * Used to represent states when dealing with API (with return value)
+ */
+sealed class APIStateWithValue<out T> {
+    object Loading : APIStateWithValue<Nothing>()
+    data class Success<out T>(val result: T) : APIStateWithValue<T>()
+    data class Error(val message: String? = null) : APIStateWithValue<Nothing>()
+}

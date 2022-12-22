@@ -17,10 +17,24 @@
     <string name="please_enter_your_email_we_will_send_you_an_email_so_you_can_reset_your_password">Please enter your email. We will send you an email so you can reset your password..</string>
     <string name="cancel" tools:ignore="ButtonCase">cancel</string>
     <string name="send_me_the_email">Send me the email</string>
-    <string name="home_button">home_button</string>
-    <string name="report_button">report_button</string>
-    <string name="notification_button">notification_button</string>
-    <string name="profile_button">profile_button</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="polluted_beach_image_provided_by_reporter">polluted beach image provided by reporter</string>
+    <string name="details_with_comma">Details:</string>
+    <string name="details">Details</string>
+    <string name="register">Register</string>
+    <string name="registered">Registered</string>
+    <string name="a_map_showing_the_location_of_the_event">A map showing the location of the event</string>
+    <string name="home">Home</string>
+    <string name="report">Report</string>
+    <string name="notification">Notification</string>
+    <string name="profile">Profile</string>
+    <string name="log_out">Log out</string>
+    <string name="be_a_part_of_defending_our_planet">Be A Part of\nDefending Our\nPlanet</string>
+    <string name="events">Events</string>
+    <string name="view_all"><u>View All</u></string>
+    <string name="picture_for_the_event">Picture for the event</string>
+    <string name="date_with_comma">Date: %1$s</string>
+    <string name="participant_joined">%1$d Participants joined</string>
+    <string name="location_with_comma">Location: %1$s</string>
+    <string name="time_with_comma">Time: %1$s</string>
+    <string name="are_you_sure_you_want_to_join_this_event">Are you sure you want to join this event?</string>
 </resources>

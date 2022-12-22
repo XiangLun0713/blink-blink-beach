@@ -38,7 +38,8 @@ class AuthRepositoryImpl @Inject constructor(
             firebaseAuth.createUserWithEmailAndPassword(email.trim(), password).await()
             if (firebaseAuth.currentUser != null) {
                 val uid = firebaseAuth.currentUser!!.uid
-                firestore.collection("users").document(uid).set(User(uid, username, email)).await()
+                firestore.collection("users").document(uid)
+                    .set(User(uid, username, email, "", emptyList())).await()
             }
             AuthState.Success
         } catch (e: Exception) {

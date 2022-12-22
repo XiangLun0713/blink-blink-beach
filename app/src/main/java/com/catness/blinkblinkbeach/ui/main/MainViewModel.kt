@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.catness.blinkblinkbeach.data.repositories.auth.AuthRepository
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -11,7 +12,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: MainRepository
+    private val repository: MainRepository,
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     private val _isUserAuthenticated = MutableLiveData<Boolean>()
@@ -27,4 +29,9 @@ class MainViewModel @Inject constructor(
             _isLoading.value = false
         }
     }
+
+    fun onLogOutButtonClick() = viewModelScope.launch {
+        authRepository.signOut()
+    }
+
 }

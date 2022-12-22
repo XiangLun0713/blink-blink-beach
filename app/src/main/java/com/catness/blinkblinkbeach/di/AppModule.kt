@@ -2,6 +2,10 @@ package com.catness.blinkblinkbeach.di
 
 import com.catness.blinkblinkbeach.data.repositories.auth.AuthRepository
 import com.catness.blinkblinkbeach.data.repositories.auth.AuthRepositoryImpl
+import com.catness.blinkblinkbeach.data.repositories.event.EventRepository
+import com.catness.blinkblinkbeach.data.repositories.event.EventRepositoryImpl
+import com.catness.blinkblinkbeach.data.repositories.home.HomeRepository
+import com.catness.blinkblinkbeach.data.repositories.home.HomeRepositoryImpl
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepository
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
@@ -33,4 +37,14 @@ object AppModule {
     @Singleton
     fun provideMainRepository(mainRepositoryImpl: MainRepositoryImpl): MainRepository =
         mainRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideEventRepository(eventRepositoryImpl: EventRepositoryImpl): EventRepository =
+        eventRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository =
+        homeRepositoryImpl
 }

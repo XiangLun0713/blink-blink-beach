@@ -35,4 +35,5 @@
     <string name="participant_joined">%1$d Participants joined</string>
     <string name="location_with_comma">Location: %1$s</string>
     <string name="time_with_comma">Time: %1$s</string>
+    <string name="are_you_sure_you_want_to_join_this_event">Are you sure you want to join this event?</string>
 </resources>

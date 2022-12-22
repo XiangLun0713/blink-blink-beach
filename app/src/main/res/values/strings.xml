@@ -35,4 +35,12 @@
     <string name="participant_joined">%1$d Participants joined</string>
     <string name="location_with_comma">Location: %1$s</string>
     <string name="time_with_comma">Time: %1$s</string>
+    <string name="events_njoined">Events\njoined</string>
+    <string name="number">%1$d</string>
+    <string name="edit_icon">edit icon</string>
+    <string name="edit_with_underline"><u>Edit</u></string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="edit_username_icon">Edit username icon</string>
+    <string name="submit_report">Submit Report</string>
+    <string name="track_my_report_with_underline"><u>Track My Report</u></string>
 </resources>

@@ -61,6 +61,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
     // splash screen
     implementation 'androidx.core:core-splashscreen:1.0.0'
+    // circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    // image picker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
     // google maps api
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     // glide

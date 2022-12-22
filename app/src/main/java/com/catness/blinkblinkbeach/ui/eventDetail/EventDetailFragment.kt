@@ -1,5 +1,6 @@
 package com.catness.blinkblinkbeach.ui.eventDetail
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.ScrollView
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.catness.blinkblinkbeach.R
 import com.catness.blinkblinkbeach.data.model.Event
+import com.catness.blinkblinkbeach.databinding.DialogConfirmRegistrationBinding
 import com.catness.blinkblinkbeach.databinding.FragmentEventDetailBinding
 import com.catness.blinkblinkbeach.utilities.APIState
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -58,7 +60,30 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
             eventAddressTextView.text = event.address
             eventDetailTextView.text = event.detail.replace("\\n", "\n")
             eventRegisterButton.setOnClickListener {
-                viewModel.onRegisterEventButtonClick(event.eventID)
+                // inflate alert dialog box
+                val customDialogBinding = DialogConfirmRegistrationBinding.inflate(layoutInflater)
+                // build and show alert dialog box
+                val builder = AlertDialog.Builder(activity)
+                    .setView(customDialogBinding.root)
+                val alertDialog = builder.show()
+                // view binding
+                customDialogBinding.apply {
+                    dialogCancelButton.setOnClickListener {
+                        alertDialog.dismiss()
+                    }
+                    dialogRegisterButton.setOnClickListener {
+                        alertDialog.dismiss()
+                        viewModel.onRegisterEventButtonClick(event.eventID)
+                    }
+                }
+            }
+            // disable register button if the user had already registered
+            if (event.participantIDs.contains(viewModel.uid.value)) {
+                eventRegisterButton.apply {
+                    alpha = 0.5f
+                    isClickable = false
+                    text = requireContext().resources.getString(R.string.registered)
+                }
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {

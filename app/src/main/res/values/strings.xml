@@ -21,6 +21,7 @@
     <string name="details_with_comma">Details:</string>
     <string name="details">Details</string>
     <string name="register">Register</string>
+    <string name="registered">Registered</string>
     <string name="a_map_showing_the_location_of_the_event">A map showing the location of the event</string>
     <string name="home">Home</string>
     <string name="report">Report</string>
@@ -47,4 +48,5 @@
     <string name="update_username">Update Username</string>
     <string name="please_enter_a_new_username">Please enter a new username.</string>
     <string name="update">Update</string>
+    <string name="are_you_sure_you_want_to_join_this_event">Are you sure you want to join this event?</string>
 </resources>

@@ -12,5 +12,7 @@ class ReportFragment : Fragment(R.layout.fragment_report) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentReportBinding.bind(view)
+        binding.apply {
+        }
     }
 }

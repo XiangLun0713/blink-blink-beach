@@ -25,8 +25,10 @@ class EventRepositoryImpl @Inject constructor(
             // add the event's id to the user's event participation list
             val userSnapshot = usersCollection.document(uid).get().await()
             val user = userSnapshot.toObject(User::class.java) ?: throw Exception()
-            val newUser = user.copy(eventsParticipated = user.eventsParticipated + eventId)
-            usersCollection.document(uid).set(newUser).await()
+            if (!user.eventsParticipated.contains(eventId)) {
+                val newUser = user.copy(eventsParticipated = user.eventsParticipated + eventId)
+                usersCollection.document(uid).set(newUser).await()
+            }
 
             // add the user's id to the event's participant list
             val eventSnapshot = eventsCollection.document(eventId).get().await()

@@ -44,4 +44,7 @@
     <string name="submit_report">Submit Report</string>
     <string name="track_my_report_with_underline"><u>Track My Report</u></string>
     <string name="email">Email</string>
+    <string name="update_username">Update Username</string>
+    <string name="please_enter_a_new_username">Please enter a new username.</string>
+    <string name="update">Update</string>
 </resources>

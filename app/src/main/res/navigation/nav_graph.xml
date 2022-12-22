@@ -68,6 +68,6 @@
         <argument
                 android:name="event"
                 app:argType="com.catness.blinkblinkbeach.data.model.Event" />
-    </fragment><action android:id="@+id/action_global_eventDetailFragment" app:destination="@id/eventDetailFragment"/>
+    </fragment><action android:id="@+id/action_global_eventDetailFragment" app:destination="@id/eventDetailFragment"/><action android:id="@+id/action_global_reportFragment" app:destination="@id/reportFragment"/>
 
 </navigation>

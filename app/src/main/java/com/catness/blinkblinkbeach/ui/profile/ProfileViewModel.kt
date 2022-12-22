@@ -1,5 +1,6 @@
 package com.catness.blinkblinkbeach.ui.profile
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -22,5 +23,15 @@ class ProfileViewModel @Inject constructor(
         viewModelScope.launch {
             _user.value = repository.getCurrentUser()
         }
+    }
+
+    fun uploadUserProfileImage(uri: Uri) = viewModelScope.launch {
+        val userData = repository.uploadImageAndReturnUser(uri)
+        _user.value = userData
+    }
+
+    fun updateUsername(username: String) = viewModelScope.launch {
+        val userData = repository.updateUsername(username)
+        _user.value = userData
     }
 }

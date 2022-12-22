@@ -31,7 +31,7 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override suspend fun signUp(username: String, email: String, password: String): AuthState {
-        if (email.isEmpty() || password.isEmpty()) return AuthState.Error("Sign up failed: Please ensure that you've entered both the email and password.")
+        if (email.isEmpty() || password.isEmpty() || username.isBlank()) return AuthState.Error("Sign up failed: Please ensure that you've entered all the required information.")
         if (!isValidEmailAddress(email.trim())) return AuthState.Error("Sign up failed: Invalid email address.")
 
         return try {
@@ -39,7 +39,7 @@ class AuthRepositoryImpl @Inject constructor(
             if (firebaseAuth.currentUser != null) {
                 val uid = firebaseAuth.currentUser!!.uid
                 firestore.collection("users").document(uid)
-                    .set(User(uid, username, email, "", emptyList())).await()
+                    .set(User(uid, username.trim(), email, "", emptyList())).await()
             }
             AuthState.Success
         } catch (e: Exception) {

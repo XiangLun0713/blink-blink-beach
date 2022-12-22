@@ -8,6 +8,8 @@ import com.catness.blinkblinkbeach.data.repositories.home.HomeRepository
 import com.catness.blinkblinkbeach.data.repositories.home.HomeRepositoryImpl
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepository
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepositoryImpl
+import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepository
+import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
@@ -47,4 +49,9 @@ object AppModule {
     @Singleton
     fun provideHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository =
         homeRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideProfileRepository(profileRepositoryImpl: ProfileRepositoryImpl): ProfileRepository =
+        profileRepositoryImpl
 }

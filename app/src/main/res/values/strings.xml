@@ -43,4 +43,5 @@
     <string name="edit_username_icon">Edit username icon</string>
     <string name="submit_report">Submit Report</string>
     <string name="track_my_report_with_underline"><u>Track My Report</u></string>
+    <string name="email">Email</string>
 </resources>

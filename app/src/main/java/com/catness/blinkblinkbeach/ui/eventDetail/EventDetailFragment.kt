@@ -77,6 +77,14 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
                     }
                 }
             }
+            // disable register button if the user had already registered
+            if (event.participantIDs.contains(viewModel.uid.value)) {
+                eventRegisterButton.apply {
+                    alpha = 0.5f
+                    isClickable = false
+                    text = requireContext().resources.getString(R.string.registered)
+                }
+            }
 
             viewLifecycleOwner.lifecycleScope.launchWhenStarted {
                 viewModel.apiState.collect { event ->

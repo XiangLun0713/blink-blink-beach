@@ -55,7 +55,11 @@
             android:id="@+id/profileFragment"
             android:name="com.catness.blinkblinkbeach.ui.profile.ProfileFragment"
             android:label="Profile"
-            tools:layout="@layout/fragment_profile" />
+            tools:layout="@layout/fragment_profile" >
+        <argument
+                android:name="user"
+                app:argType="com.catness.blinkblinkbeach.data.model.User" />
+    </fragment>
     <fragment
             android:id="@+id/eventDetailFragment"
             android:name="com.catness.blinkblinkbeach.ui.eventDetail.EventDetailFragment"
@@ -64,6 +68,6 @@
         <argument
                 android:name="event"
                 app:argType="com.catness.blinkblinkbeach.data.model.Event" />
-    </fragment><action android:id="@+id/action_global_eventDetailFragment" app:destination="@id/eventDetailFragment"/>
+    </fragment><action android:id="@+id/action_global_eventDetailFragment" app:destination="@id/eventDetailFragment"/><action android:id="@+id/action_global_reportFragment" app:destination="@id/reportFragment"/>
 
 </navigation>

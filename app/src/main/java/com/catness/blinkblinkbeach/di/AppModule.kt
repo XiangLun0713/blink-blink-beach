@@ -8,8 +8,13 @@ import com.catness.blinkblinkbeach.data.repositories.home.HomeRepository
 import com.catness.blinkblinkbeach.data.repositories.home.HomeRepositoryImpl
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepository
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepositoryImpl
+import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepository
+import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,4 +52,17 @@ object AppModule {
     @Singleton
     fun provideHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository =
         homeRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideProfileRepository(profileRepositoryImpl: ProfileRepositoryImpl): ProfileRepository =
+        profileRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideStorageRef() = Firebase.storage.reference
+
+    @Provides
+    @Singleton
+    fun provideFirebaseStorage() = FirebaseStorage.getInstance()
 }

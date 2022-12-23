@@ -36,5 +36,17 @@
     <string name="participant_joined">%1$d Participants joined</string>
     <string name="location_with_comma">Location: %1$s</string>
     <string name="time_with_comma">Time: %1$s</string>
+    <string name="events_njoined">Events\njoined</string>
+    <string name="number">%1$d</string>
+    <string name="edit_icon">edit icon</string>
+    <string name="edit_with_underline"><u>Edit</u></string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="edit_username_icon">Edit username icon</string>
+    <string name="submit_report">Submit Report</string>
+    <string name="track_my_report_with_underline"><u>Track My Report</u></string>
+    <string name="email">Email</string>
+    <string name="update_username">Update Username</string>
+    <string name="please_enter_a_new_username">Please enter a new username.</string>
+    <string name="update">Update</string>
     <string name="are_you_sure_you_want_to_join_this_event">Are you sure you want to join this event?</string>
 </resources>

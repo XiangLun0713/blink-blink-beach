@@ -1,11 +1,19 @@
 package com.catness.blinkblinkbeach.ui.report
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.catness.blinkblinkbeach.data.model.Report
 import com.catness.blinkblinkbeach.databinding.ReportCardTemplateBinding
 
-class ReportAdapter : RecyclerView.Adapter<ReportAdapter.ViewHolder>() {
+class ReportAdapter(
+    private val reportList: List<Report>,
+    private val context: Context,
+    private val navController: NavController
+) : RecyclerView.Adapter<ReportAdapter.ViewHolder>() {
+
     class ViewHolder(val binding: ReportCardTemplateBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -16,11 +24,15 @@ class ReportAdapter : RecyclerView.Adapter<ReportAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val report = reportList[position]
+        holder.binding.apply {
+            reportIdText.text = report.id
+            reportDateTimeTextView.text = report.date
+        }
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return reportList.size
     }
 
 }

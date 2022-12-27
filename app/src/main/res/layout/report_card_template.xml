@@ -52,7 +52,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/dateTimeText"
+                    android:id="@+id/reportDateTimeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -62,7 +62,7 @@
                     android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/locationText"
+                    android:id="@+id/reportLocationText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

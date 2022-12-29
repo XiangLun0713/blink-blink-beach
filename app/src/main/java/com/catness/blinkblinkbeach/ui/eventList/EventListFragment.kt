@@ -1,4 +1,4 @@
-package com.catness.blinkblinkbeach.ui.home
+package com.catness.blinkblinkbeach.ui.eventList
 
 import android.os.Bundle
 import android.view.View
@@ -8,42 +8,39 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.catness.blinkblinkbeach.R
 import com.catness.blinkblinkbeach.data.model.Response
-import com.catness.blinkblinkbeach.databinding.FragmentHomeBinding
+import com.catness.blinkblinkbeach.databinding.FragmentEventListBinding
+import com.catness.blinkblinkbeach.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class EventListFragment : Fragment(R.layout.fragment_event_list) {
 
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val binding = FragmentHomeBinding.bind(view)
+        val binding = FragmentEventListBinding.bind(view)
 
         binding.apply {
-            viewAllButton.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeFragmentToEventListFragment()
-                findNavController().navigate(action)
-            }
 
             viewModel.eventsResponse.observe(viewLifecycleOwner) { eventsResponse ->
                 when (eventsResponse) {
                     is Response.Success -> {
                         // save recycler view state
                         val recyclerViewState =
-                            eventRecyclerView.layoutManager?.onSaveInstanceState()
+                            eventBannerRecyclerView.layoutManager?.onSaveInstanceState()
 
                         // update recycler view
-                        eventRecyclerView.adapter =
-                            EventAdapter(
-                                eventsResponse.data.subList(0, 5),
+                        eventBannerRecyclerView.adapter =
+                            EventListAdapter(
+                                eventsResponse.data,
                                 requireContext(),
                                 findNavController()
                             )
 
                         // restore recycler view state
-                        eventRecyclerView.layoutManager?.onRestoreInstanceState(recyclerViewState)
+                        eventBannerRecyclerView.layoutManager?.onRestoreInstanceState(
+                            recyclerViewState)
                     }
                     is Response.Failure -> {
                         Toast.makeText(
@@ -55,7 +52,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     else -> {}
                 }
             }
+
         }
     }
-
 }

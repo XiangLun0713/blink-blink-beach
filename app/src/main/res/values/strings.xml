@@ -49,4 +49,7 @@
     <string name="please_enter_a_new_username">Please enter a new username.</string>
     <string name="update">Update</string>
     <string name="are_you_sure_you_want_to_join_this_event">Are you sure you want to join this event?</string>
+    <string name="sort">Sort</string>
+    <string name="sort_by">Sort by</string>
+    <string name="search">Search</string>
 </resources>

@@ -106,6 +106,12 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
                         is APIState.Success -> {
                             // hide the circular progress indicator
                             eventDetailProgressCardView.visibility = View.INVISIBLE
+                            // change the button to registered
+                            eventRegisterButton.apply {
+                                alpha = 0.5f
+                                isClickable = false
+                                text = requireContext().resources.getString(R.string.registered)
+                            }
                             // display success message
                             Toast.makeText(
                                 this@EventDetailFragment.requireActivity(),

@@ -19,6 +19,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.catness.blinkblinkbeach.NavGraphDirections
 import com.catness.blinkblinkbeach.R
 import com.catness.blinkblinkbeach.databinding.ActivityMainBinding
+import com.catness.blinkblinkbeach.ui.eventList.EventListFragment
 import com.catness.blinkblinkbeach.ui.home.HomeFragment
 import com.catness.blinkblinkbeach.ui.notification.NotificationFragment
 import com.catness.blinkblinkbeach.ui.profile.ProfileFragment
@@ -67,22 +68,10 @@ class MainActivity : AppCompatActivity() {
                     fm: FragmentManager,
                     f: Fragment,
                     v: View,
-                    savedInstanceState: Bundle?
+                    savedInstanceState: Bundle?,
                 ) {
                     when (f) {
-                        is HomeFragment -> {
-                            topAppBar.isVisible = true
-                            bottomNavigationMenu.isVisible = true
-                        }
-                        is NotificationFragment -> {
-                            topAppBar.isVisible = true
-                            bottomNavigationMenu.isVisible = true
-                        }
-                        is ReportFragment -> {
-                            topAppBar.isVisible = true
-                            bottomNavigationMenu.isVisible = true
-                        }
-                        is ProfileFragment -> {
+                        is HomeFragment, is NotificationFragment, is ReportFragment, is ProfileFragment, is EventListFragment -> {
                             topAppBar.isVisible = true
                             bottomNavigationMenu.isVisible = true
                         }

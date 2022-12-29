@@ -2,6 +2,7 @@ package com.catness.blinkblinkbeach.data.repositories.auth
 
 import android.util.Patterns
 import com.catness.blinkblinkbeach.data.model.User
+import com.catness.blinkblinkbeach.utilities.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
@@ -38,7 +39,7 @@ class AuthRepositoryImpl @Inject constructor(
             firebaseAuth.createUserWithEmailAndPassword(email.trim(), password).await()
             if (firebaseAuth.currentUser != null) {
                 val uid = firebaseAuth.currentUser!!.uid
-                firestore.collection("users").document(uid)
+                firestore.collection(Constants.USERS).document(uid)
                     .set(User(uid, username.trim(), email, "", emptyList())).await()
             }
             AuthState.Success

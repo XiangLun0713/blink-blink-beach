@@ -38,7 +38,6 @@ class EventDetailViewModel @Inject constructor(
     }
 
     fun onRegisterEventButtonClick(eventId: String) = viewModelScope.launch {
-        // todo fix unable to register error
         apiStateChannel.send(APIState.Loading)
         apiStateChannel.send(repository.registerEvent(eventId))
     }

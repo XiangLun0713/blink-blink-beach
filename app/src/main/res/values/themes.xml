@@ -35,9 +35,4 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="overlayIconOnToolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
-        <!-- color used by navigation icon and overflow icon -->
-        <item name="colorControlNormal">@color/md_theme_light_onPrimary</item>
-    </style>
-
 </resources>

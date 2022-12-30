@@ -26,6 +26,7 @@ import com.catness.blinkblinkbeach.ui.home.HomeFragment
 import com.catness.blinkblinkbeach.ui.notification.NotificationFragment
 import com.catness.blinkblinkbeach.ui.profile.ProfileFragment
 import com.catness.blinkblinkbeach.ui.report.ReportFragment
+import com.catness.blinkblinkbeach.ui.submitReport.SubmitReportFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.notificationFragment,
                 R.id.profileFragment,
                 R.id.eventDetailFragment,
+                R.id.submitReportFragment,
                 R.id.signInFragment
             )
         )
@@ -71,10 +73,10 @@ class MainActivity : AppCompatActivity() {
                     fm: FragmentManager,
                     f: Fragment,
                     v: View,
-                    savedInstanceState: Bundle?,
+                    savedInstanceState: Bundle?
                 ) {
                     when (f) {
-                        is HomeFragment, is NotificationFragment, is ReportFragment, is ProfileFragment, is EventListFragment -> {
+                        is HomeFragment, is NotificationFragment, is ReportFragment, is ProfileFragment, is EventListFragment, is SubmitReportFragment -> {
                             topAppBar.isVisible = true
                             bottomNavigationMenu.isVisible = true
                         }

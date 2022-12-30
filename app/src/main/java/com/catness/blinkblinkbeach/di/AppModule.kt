@@ -10,6 +10,8 @@ import com.catness.blinkblinkbeach.data.repositories.main.MainRepository
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepositoryImpl
 import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepository
 import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepositoryImpl
+import com.catness.blinkblinkbeach.data.repositories.report.ReportRepository
+import com.catness.blinkblinkbeach.data.repositories.report.ReportRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -65,4 +67,9 @@ object AppModule {
     @Provides
     @Singleton
     fun provideFirebaseStorage() = FirebaseStorage.getInstance()
+
+    @Provides
+    @Singleton
+    fun provideReportRepository(reportRepositoryImpl: ReportRepositoryImpl): ReportRepository =
+        reportRepositoryImpl
 }

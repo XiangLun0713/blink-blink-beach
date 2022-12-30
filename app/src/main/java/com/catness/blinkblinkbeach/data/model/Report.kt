@@ -7,11 +7,11 @@ import java.text.DateFormat
 
 @Parcelize
 data class Report(
-    val id: String,
-    val longitude: Double,
-    val latitude: Double,
-    val date: String = DateFormat.getDateTimeInstance().format(System.currentTimeMillis()),
-    val imageUrl: String,
-    val status: ReportStatus,
-    val reporterID: String,
+    var id: String = "",
+    var longitude: Double = 0.0,
+    var latitude: Double = 0.0,
+    var date: String = DateFormat.getDateTimeInstance().format(System.currentTimeMillis()),
+    var imageUrl: String = "",
+    var status: ReportStatus = ReportStatus.PENDING,
+    var reporterID: String = "",
 ) : Parcelable

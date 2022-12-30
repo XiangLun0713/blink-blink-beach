@@ -2,5 +2,6 @@ package com.catness.blinkblinkbeach.utilities
 
 enum class ReportStatus {
     PENDING,
-    APPROVED
+    APPROVED,
+    REJECTED,
 }

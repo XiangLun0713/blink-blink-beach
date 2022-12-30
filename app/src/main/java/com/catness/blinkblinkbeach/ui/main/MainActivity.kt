@@ -23,6 +23,7 @@ import com.catness.blinkblinkbeach.ui.home.HomeFragment
 import com.catness.blinkblinkbeach.ui.notification.NotificationFragment
 import com.catness.blinkblinkbeach.ui.profile.ProfileFragment
 import com.catness.blinkblinkbeach.ui.report.ReportFragment
+import com.catness.blinkblinkbeach.ui.submitReport.SubmitReportFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,7 +48,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.reportFragment,
                 R.id.notificationFragment,
                 R.id.profileFragment,
-                R.id.eventDetailFragment
+                R.id.eventDetailFragment,
+                R.id.submitReportFragment
             )
         )
 
@@ -83,6 +85,10 @@ class MainActivity : AppCompatActivity() {
                             bottomNavigationMenu.isVisible = true
                         }
                         is ProfileFragment -> {
+                            topAppBar.isVisible = true
+                            bottomNavigationMenu.isVisible = true
+                        }
+                        is SubmitReportFragment -> {
                             topAppBar.isVisible = true
                             bottomNavigationMenu.isVisible = true
                         }

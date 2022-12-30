@@ -53,4 +53,12 @@
     <string name="sort_by">Sort by</string>
     <string name="search">Search</string>
     <string name="date">Date</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="please_tell_us_nwhich_beach_nis_not_blink_blink">Please tell us\nwhich beach\nis not blink-blink.</string>
+    <string name="user_s_name">User\'s Name</string>
+    <string name="write_your_report_here">Write your report here</string>
+    <string name="add_your_evidence">Add your evidence</string>
+    <string name="add_location">Add location</string>
+    <string name="submit">Submit</string>
 </resources>

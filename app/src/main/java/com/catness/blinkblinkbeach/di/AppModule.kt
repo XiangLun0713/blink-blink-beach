@@ -8,13 +8,10 @@ import com.catness.blinkblinkbeach.data.repositories.home.HomeRepository
 import com.catness.blinkblinkbeach.data.repositories.home.HomeRepositoryImpl
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepository
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepositoryImpl
-<<<<<<< HEAD
 import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepository
 import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepositoryImpl
-=======
 import com.catness.blinkblinkbeach.data.repositories.report.ReportRepository
 import com.catness.blinkblinkbeach.data.repositories.report.ReportRepositoryImpl
->>>>>>> 253bc34 (Done setup report firebase integration)
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -71,6 +68,8 @@ object AppModule {
     @Singleton
     fun provideFirebaseStorage() = FirebaseStorage.getInstance()
 
+    @Provides
+    @Singleton
     fun provideReportRepository(reportRepositoryImpl: ReportRepositoryImpl): ReportRepository =
         reportRepositoryImpl
 }

@@ -1,8 +1,12 @@
 package com.catness.blinkblinkbeach.data.repositories.home
 
 import com.catness.blinkblinkbeach.data.model.Event
-import com.catness.blinkblinkbeach.utilities.APIStateWithValue
+import com.catness.blinkblinkbeach.data.model.Response
+import kotlinx.coroutines.flow.Flow
+
+typealias Events = List<Event>
+typealias EventsResponse = Response<Events>
 
 interface HomeRepository {
-    suspend fun fetchEventList(): APIStateWithValue<List<Event>>
+    fun getEventsFromFirestore(): Flow<EventsResponse>
 }

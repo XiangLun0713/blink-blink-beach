@@ -3,6 +3,7 @@ package com.catness.blinkblinkbeach.data.repositories.event
 import com.catness.blinkblinkbeach.data.model.Event
 import com.catness.blinkblinkbeach.data.model.User
 import com.catness.blinkblinkbeach.utilities.APIState
+import com.catness.blinkblinkbeach.utilities.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
@@ -16,8 +17,8 @@ class EventRepositoryImpl @Inject constructor(
 ) : EventRepository {
 
     override suspend fun registerEvent(eventId: String): APIState {
-        val usersCollection = firestore.collection("users")
-        val eventsCollection = firestore.collection("events")
+        val usersCollection = firestore.collection(Constants.USERS)
+        val eventsCollection = firestore.collection(Constants.EVENTS)
 
         return try {
             val uid = firebaseAuth.uid ?: throw Exception()

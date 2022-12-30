@@ -12,5 +12,6 @@ class SubmitReportFragment : Fragment(R.layout.fragment_submit_report) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentSubmitReportBinding.bind(view)
+
     }
 }

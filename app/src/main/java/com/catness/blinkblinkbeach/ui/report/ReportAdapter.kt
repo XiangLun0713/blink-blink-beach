@@ -31,8 +31,10 @@ class ReportAdapter(
             Glide.with(context)
                 .load(Uri.parse(report.imageUrl))
                 .into(reportCardImageView)
-            reportIdText.text = report.id
             reportDateTimeTextView.text = report.date
+            reportIdText.text = report.id
+            reportLocationText.text =
+                report.latitude.toString() + ", " + report.longitude.toString()
         }
     }
 

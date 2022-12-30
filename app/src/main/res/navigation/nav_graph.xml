@@ -67,7 +67,7 @@
     <fragment
             android:id="@+id/eventDetailFragment"
             android:name="com.catness.blinkblinkbeach.ui.eventDetail.EventDetailFragment"
-            android:label="Home"
+            android:label=""
             tools:layout="@layout/fragment_event_detail">
         <argument
                 android:name="event"

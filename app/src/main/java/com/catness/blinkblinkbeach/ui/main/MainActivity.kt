@@ -2,11 +2,13 @@ package com.catness.blinkblinkbeach.ui.main
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -48,7 +50,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.reportFragment,
                 R.id.notificationFragment,
                 R.id.profileFragment,
-                R.id.eventDetailFragment
+                R.id.eventDetailFragment,
+                R.id.signInFragment
             )
         )
 
@@ -99,29 +102,31 @@ class MainActivity : AppCompatActivity() {
 
         // set up bottom nav bar
         NavigationUI.setupWithNavController(binding.bottomNavigationMenu, navController)
+
+        // set up overflow menu
+        addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.app_bar_menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.action_logout -> {
+                        val action = NavGraphDirections.actionGlobalSignInFragment()
+                        viewModel.onLogOutButtonClick()
+                        navController.navigate(action)
+                        true
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
+        })
     }
 
     override fun onSupportNavigateUp(): Boolean {
         // make the back button on action bar functional
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.app_bar_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_logout -> {
-                val action = NavGraphDirections.actionGlobalSignInFragment()
-                viewModel.onLogOutButtonClick()
-                navController.navigate(action)
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
-        }
     }
 }

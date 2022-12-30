@@ -1,9 +1,13 @@
 package com.catness.blinkblinkbeach.ui.eventList
 
 import android.os.Bundle
+import android.text.Html
+import android.view.Menu
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -12,6 +16,7 @@ import com.catness.blinkblinkbeach.R
 import com.catness.blinkblinkbeach.data.repositories.eventList.SortOrder
 import com.catness.blinkblinkbeach.databinding.FragmentEventListBinding
 import com.catness.blinkblinkbeach.ui.home.HomeViewModel
+import com.catness.blinkblinkbeach.utilities.onQueryTextChanged
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,20 +25,30 @@ class EventListFragment : Fragment(R.layout.fragment_event_list) {
 
     private val viewModel: HomeViewModel by viewModels()
 
-    // todo change overflow menu in this fragment, to include the search action
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setHasOptionsMenu(true)
-//    }
-//
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.event_list_menu, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
-
     companion object {
         const val DATE = "Date"
         const val NAME = "Name"
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.clear()
+        requireActivity().menuInflater.inflate(R.menu.event_list_menu, menu)
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem.actionView as SearchView
+        searchView.queryHint = Html.fromHtml("<font color = #fafafa>Search by name...</font>")
+        val editText = searchView.findViewById(androidx.appcompat.R.id.search_src_text) as EditText
+        editText.setTextColor(getResources().getColor(R.color.md_theme_light_onPrimary))
+
+        searchView.onQueryTextChanged {
+            viewModel.searchQuery.value = it
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,6 +69,8 @@ class EventListFragment : Fragment(R.layout.fragment_event_list) {
                         }, false)
                 }
             }
+
+            // set up auto complete text view
             autoCompleteTextView?.setSimpleItems(options)
             val adapter =
                 ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, options)
@@ -71,6 +88,7 @@ class EventListFragment : Fragment(R.layout.fragment_event_list) {
                     }
                 }
 
+            // observe events and populate event list
             viewModel.events.observe(viewLifecycleOwner) { eventList ->
                 // save recycler view state
                 val recyclerViewState =
@@ -89,7 +107,11 @@ class EventListFragment : Fragment(R.layout.fragment_event_list) {
                     recyclerViewState)
 
             }
-
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().invalidateOptionsMenu()
     }
 }

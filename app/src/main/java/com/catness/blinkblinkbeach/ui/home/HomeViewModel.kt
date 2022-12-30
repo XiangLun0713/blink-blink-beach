@@ -64,7 +64,7 @@ class HomeViewModel @Inject constructor(
     ): Flow<List<Event>> = flow {
         val modifiedList = mutableListOf<Event>()
         for (event in list) {
-            if (event.name.contains(query)) {
+            if (event.name.contains(query, ignoreCase = true)) {
                 modifiedList.add(event)
             }
         }

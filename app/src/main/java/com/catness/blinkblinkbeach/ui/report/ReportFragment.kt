@@ -69,6 +69,10 @@ class ReportFragment : Fragment(R.layout.fragment_report) {
                     else -> {}
                 }
             }
+
+            submitReportButton.setOnClickListener {
+                findNavController().navigate(R.id.submitReportFragment)
+            }
         }
     }
 }

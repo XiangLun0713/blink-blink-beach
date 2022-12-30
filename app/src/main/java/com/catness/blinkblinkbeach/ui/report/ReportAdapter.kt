@@ -1,10 +1,12 @@
 package com.catness.blinkblinkbeach.ui.report
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.catness.blinkblinkbeach.data.model.Report
 import com.catness.blinkblinkbeach.databinding.ReportCardTemplateBinding
 
@@ -26,6 +28,9 @@ class ReportAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val report = reportList[position]
         holder.binding.apply {
+            Glide.with(context)
+                .load(Uri.parse(report.imageUrl))
+                .into(reportCardImageView)
             reportIdText.text = report.id
             reportDateTimeTextView.text = report.date
         }

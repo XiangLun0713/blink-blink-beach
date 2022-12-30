@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.catness.blinkblinkbeach.data.model.Report
 import com.catness.blinkblinkbeach.data.repositories.report.ReportRepository
 import com.catness.blinkblinkbeach.utilities.APIStateWithValue
+import com.catness.blinkblinkbeach.utilities.ReportStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,7 +20,11 @@ class ReportViewModel @Inject constructor(
     private val _reportList = MutableLiveData<APIStateWithValue<List<Report>>>()
     val reportList: LiveData<APIStateWithValue<List<Report>>> = _reportList
 
-    fun populateReportList() = viewModelScope.launch {
-        _reportList.value = repository.fetchReportList()
+    fun populateReportList(status: ReportStatus) = viewModelScope.launch {
+        _reportList.value = repository.fetchReportList(status)
+    }
+
+    fun clearCurrentReportList() = viewModelScope.launch {
+        _reportList.value = APIStateWithValue.Success(emptyList())
     }
 }

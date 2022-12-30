@@ -2,6 +2,7 @@ package com.catness.blinkblinkbeach.data.repositories.report
 
 import com.catness.blinkblinkbeach.data.model.Report
 import com.catness.blinkblinkbeach.utilities.APIStateWithValue
+import com.catness.blinkblinkbeach.utilities.ReportStatus
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
@@ -15,10 +16,11 @@ class ReportRepositoryImpl @Inject constructor(
     private val firestoreAuth: FirebaseAuth
 ) : ReportRepository {
 
-    override suspend fun fetchReportList(): APIStateWithValue<List<Report>> {
+    override suspend fun fetchReportList(status: ReportStatus): APIStateWithValue<List<Report>> {
         val userID = firestoreAuth.uid
 
         val reportsCollection = firestore.collection("reports").whereEqualTo("reporterID", userID)
+            .whereEqualTo("status", status)
         val reportList = mutableListOf<Report>()
 
         return try {

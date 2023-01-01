@@ -10,6 +10,7 @@ import com.catness.blinkblinkbeach.R
 import com.catness.blinkblinkbeach.data.model.Response
 import com.catness.blinkblinkbeach.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.math.min
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -37,7 +38,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         // update recycler view
                         eventRecyclerView.adapter =
                             EventAdapter(
-                                eventsResponse.data.subList(0, 5),
+                                eventsResponse.data.subList(0, min(eventsResponse.data.size, 5)),
                                 requireContext(),
                                 findNavController()
                             )

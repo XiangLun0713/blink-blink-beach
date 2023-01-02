@@ -59,11 +59,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
             viewModel.pastEventResponse.observe(viewLifecycleOwner) { eventsResponse ->
-                println("here --------> $eventsResponse")
                 when (eventsResponse) {
                     is Response.Success -> {
                         val pastEventList = eventsResponse.data
-                        println(pastEventList.joinToString(separator = "\n"))
                         // update statistics
                         numberOfEventsHeldTextView.text = pastEventList.size.toString()
                         var count = 0

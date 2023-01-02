@@ -57,7 +57,6 @@ class ProfileRepositoryImpl @Inject constructor(
             newUser
         } catch (e: Exception) {
             // return error state
-            println("Upload image failed: ${e.message}")
             User()
         }
     }

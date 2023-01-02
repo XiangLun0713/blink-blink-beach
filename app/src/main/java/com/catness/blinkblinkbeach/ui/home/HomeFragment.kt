@@ -36,6 +36,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                             eventRecyclerView.layoutManager?.onSaveInstanceState()
 
                         // update recycler view
+                        var displayItemCount = 5
+                        if (eventsResponse.data.size < displayItemCount) {
+                            displayItemCount = eventsResponse.data.size
+                        }
                         eventRecyclerView.adapter =
                             EventAdapter(
                                 eventsResponse.data.subList(0, min(eventsResponse.data.size, 5)),

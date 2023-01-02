@@ -63,4 +63,10 @@
     <string name="add_location">Add location</string>
     <string name="submit">Submit</string>
     <string name="total_participation">Total Participation</string>
+    <string name="pending">Pending</string>
+    <string name="approved">Approved</string>
+    <string name="go_to_submit_report_page">Go to submit report page</string>
+    <string name="select_image_from_camera">select image from camera</string>
+    <string name="select_image_from_gallery">select image from gallery</string>
+    <string name="pick_location">pick location</string>
 </resources>

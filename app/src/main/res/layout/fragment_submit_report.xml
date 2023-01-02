@@ -1,163 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.submitReport.SubmitReportFragment">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.submitReport.SubmitReportFragment">
 
     <RelativeLayout
-        android:id="@+id/submitReport_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_bottom_corner"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            android:id="@+id/submitReport_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_bottom_corner"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/bitter_bold"
-            android:text="@string/please_tell_us_nwhich_beach_nis_not_blink_blink"
-            android:textAlignment="viewStart"
-            android:textColor="@color/md_theme_light_onPrimary"
-            android:textSize="30sp" />
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/bitter_bold"
+                android:text="@string/please_tell_us_nwhich_beach_nis_not_blink_blink"
+                android:textAlignment="viewStart"
+                android:textColor="@color/md_theme_light_onPrimary"
+                android:textSize="30sp" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submitReport_header">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/username_text_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp"
-            android:layout_weight="1"
-            android:hint="@string/user_s_name" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/report_description_text_input"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp"
-            android:layout_weight="1"
-            android:hint="@string/write_your_report_here">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/report_description_edit_text"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:autofillHints="emailAddress"
-                android:fontFamily="@font/quicksand_regular"
-                android:gravity="top"
-                android:inputType="textMultiLine"
-                android:singleLine="false" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/submitReport_header"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" >
 
         <LinearLayout
-            android:id="@+id/evidenceRow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/evidence_text_input"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:gravity="center_horizontal"
+                android:paddingVertical="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/add_your_evidence">
+                android:layout_marginHorizontal="15dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/submitReport_header">
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/report_description_text_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="@string/write_your_report_here">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/evidence_edit_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:autofillHints="emailAddress"
-                    android:enabled="false"
-                    android:fontFamily="@font/quicksand_regular"
-                    android:inputType="textEmailAddress" />
+                        android:id="@+id/report_description_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:fontFamily="@font/quicksand_regular"
+                        android:gravity="top"
+                        android:inputType="textMultiLine"
+                        android:singleLine="false" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageView
-                android:id="@+id/uploadImageBtn"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/imagepicker" />
-
-            <ImageView
-                android:id="@+id/cameraBtn"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/camera" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="15dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/location_text_input"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:hint="@string/add_location">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/location_edit_text"
+            <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/evidenceRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:autofillHints="emailAddress"
-                    android:enabled="false"
-                    android:fontFamily="@font/quicksand_regular"
-                    android:inputType="textEmailAddress" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/evidence_text_input"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/add_your_evidence">
 
-            <ImageView
-                android:id="@+id/locationBtn"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:src="@drawable/locationpicker" />
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/evidence_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:autofillHints="emailAddress"
+                            android:enabled="false"
+                            android:clickable="false"
+                            android:fontFamily="@font/quicksand_regular"
+                            android:inputType="text" />
 
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                        android:id="@+id/uploadImageBtn"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="@string/select_image_from_gallery"
+                        android:src="@drawable/imagepicker" />
+
+                <ImageView
+                        android:id="@+id/cameraBtn"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:src="@drawable/camera"
+                        android:contentDescription="@string/select_image_from_camera" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/location_text_input"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:hint="@string/add_location">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/location_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:fontFamily="@font/quicksand_regular"
+                            android:inputType="text" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                        android:id="@+id/locationBtn"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/pick_location"
+                        android:src="@drawable/locationpicker" />
+
+            </LinearLayout>
+
+            <Button
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/submitBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bitter_regular"
+                    android:text="@string/submit" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/submitBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/submit" />
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

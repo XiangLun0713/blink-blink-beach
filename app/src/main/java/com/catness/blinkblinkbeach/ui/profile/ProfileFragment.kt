@@ -81,7 +81,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
 
             submitReportButton.setOnClickListener {
-                // todo navigate to my report page
+                val action = NavGraphDirections.actionGlobalSubmitReportFragment()
+                findNavController().navigate(action)
             }
 
             trackMyReportButton.setOnClickListener {

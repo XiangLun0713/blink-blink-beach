@@ -55,7 +55,7 @@
                     android:id="@+id/event_header_title_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="30dp"
+                    android:paddingHorizontal="15dp"
                     android:paddingVertical="15dp"
                     android:layout_alignParentBottom="true"
                     tools:text="Beach Sina Putih"
@@ -74,7 +74,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:paddingVertical="25dp"
-                android:paddingHorizontal="30dp">
+                android:paddingHorizontal="15dp">
 
             <TextView
                     android:id="@+id/event_date_text_view"

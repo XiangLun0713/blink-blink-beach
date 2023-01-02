@@ -89,4 +89,7 @@
             android:name="com.catness.blinkblinkbeach.ui.submitReport.SubmitReportFragment"
             android:label="@string/submit_report"
             tools:layout="@layout/fragment_submit_report" />
+    <action
+            android:id="@+id/action_global_submitReportFragment"
+            app:destination="@id/submitReportFragment" />
 </navigation>

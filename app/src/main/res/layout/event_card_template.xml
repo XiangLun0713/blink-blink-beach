@@ -87,6 +87,6 @@
             android:textAllCaps="false"
             android:backgroundTint="@color/button_on_primary"
             android:textColor="@color/md_theme_light_onSecondary"
-            android:fontFamily="@font/quicksand_regular" />
+            android:fontFamily="@font/bitter_regular" />
 
 </LinearLayout>

@@ -68,15 +68,15 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/blink_blink_beach"
+                                android:text="@string/total_participation"
                                 android:drawablePadding="7dp"
-                                app:drawableStartCompat="@drawable/ic_blink_blink_icon" />
+                                app:drawableStartCompat="@drawable/ic_people_icon" />
 
                         <TextView
-                                android:id="@+id/number_of_blink_blink_beach"
+                                android:id="@+id/number_of_blink_blink_beach_text_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                tools:text="35"
+                                tools:text="1120"
                                 android:fontFamily="@font/quicksand_regular"
                                 android:textSize="40sp"
                                 android:textColor="@color/md_theme_light_primary" />
@@ -106,7 +106,7 @@
                                 app:drawableStartCompat="@drawable/ic_flag_icon" />
 
                         <TextView
-                                android:id="@+id/number_of_events_held"
+                                android:id="@+id/number_of_events_held_text_view"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 tools:text="187"

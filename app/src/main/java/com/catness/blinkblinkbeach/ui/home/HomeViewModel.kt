@@ -23,6 +23,9 @@ class HomeViewModel @Inject constructor(
     private val _eventsResponse = MutableLiveData<EventsResponse>(Response.Loading)
     val eventsResponse: LiveData<EventsResponse> = _eventsResponse
 
+    private val _pastEventsResponse = MutableLiveData<EventsResponse>(Response.Loading)
+    val pastEventResponse: LiveData<EventsResponse> = _pastEventsResponse
+
     private val _eventList = MutableStateFlow<List<Event>>(listOf())
 
     val searchQuery = MutableStateFlow("")
@@ -30,6 +33,7 @@ class HomeViewModel @Inject constructor(
 
     init {
         getEvents()
+        getPastEvents()
     }
 
     private fun getEvents() = viewModelScope.launch {
@@ -38,6 +42,11 @@ class HomeViewModel @Inject constructor(
             if (response is Response.Success) {
                 _eventList.value = response.data
             }
+        }
+    }
+    private fun getPastEvents() = viewModelScope.launch {
+        repository.getPastEventsFromFirestore().collect { response ->
+            _pastEventsResponse.value = response
         }
     }
 

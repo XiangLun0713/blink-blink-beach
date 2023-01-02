@@ -33,4 +33,22 @@ class HomeRepositoryImpl @Inject constructor(
             snapshotListener.remove()
         }
     }
+
+    override fun getPastEventsFromFirestore() = callbackFlow {
+        val snapshotListener =
+            eventsCollection.whereLessThan("endTimeMillis", System.currentTimeMillis())
+                .addSnapshotListener { snapshot, e ->
+                    val eventsResponse = if (snapshot != null) {
+                        val events = snapshot.toObjects(Event::class.java)
+                        Response.Success(events)
+                    } else {
+                        Response.Failure(e)
+                    }
+                    trySend(eventsResponse)
+                }
+
+        awaitClose {
+            snapshotListener.remove()
+        }
+    }
 }

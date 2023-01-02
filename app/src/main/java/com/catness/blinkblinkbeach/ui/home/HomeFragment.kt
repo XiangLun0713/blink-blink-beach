@@ -31,24 +31,44 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModel.eventsResponse.observe(viewLifecycleOwner) { eventsResponse ->
                 when (eventsResponse) {
                     is Response.Success -> {
+                        val eventList = eventsResponse.data
+
                         // save recycler view state
                         val recyclerViewState =
                             eventRecyclerView.layoutManager?.onSaveInstanceState()
 
                         // update recycler view
-                        var displayItemCount = 5
-                        if (eventsResponse.data.size < displayItemCount) {
-                            displayItemCount = eventsResponse.data.size
-                        }
                         eventRecyclerView.adapter =
                             EventAdapter(
-                                eventsResponse.data.subList(0, min(eventsResponse.data.size, 5)),
+                                eventList.subList(0, min(eventList.size, 5)),
                                 requireContext(),
                                 findNavController()
                             )
 
                         // restore recycler view state
                         eventRecyclerView.layoutManager?.onRestoreInstanceState(recyclerViewState)
+                    }
+                    is Response.Failure -> {
+                        Toast.makeText(
+                            context,
+                            eventsResponse.e?.message,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    else -> {}
+                }
+            }
+            viewModel.pastEventResponse.observe(viewLifecycleOwner) { eventsResponse ->
+                when (eventsResponse) {
+                    is Response.Success -> {
+                        val pastEventList = eventsResponse.data
+                        // update statistics
+                        numberOfEventsHeldTextView.text = pastEventList.size.toString()
+                        var count = 0
+                        pastEventList.forEach { pastEvent ->
+                            count += pastEvent.participantIDs.size
+                        }
+                        numberOfBlinkBlinkBeachTextView.text = count.toString()
                     }
                     is Response.Failure -> {
                         Toast.makeText(

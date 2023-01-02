@@ -29,7 +29,7 @@
     <string name="profile">Profile</string>
     <string name="log_out">Log out</string>
     <string name="be_a_part_of_defending_our_planet">Be A Part of\nDefending Our\nPlanet</string>
-    <string name="coming_events">Coming Events</string>
+    <string name="events">Events</string>
     <string name="view_all"><u>View All</u></string>
     <string name="picture_for_the_event">Picture for the event</string>
     <string name="date_with_comma">Date: %1$s</string>
@@ -55,4 +55,11 @@
     <string name="date">Date</string>
     <string name="blink_blink_beach">Blink Blink Beach</string>
     <string name="events_held">Events Held</string>
+    <string name="coming_events">Coming Events</string>
+    <string name="please_tell_us_nwhich_beach_nis_not_blink_blink">Please tell us\nwhich beach\nis not blink-blink.</string>
+    <string name="user_s_name">User\'s Name</string>
+    <string name="write_your_report_here">Write your report here</string>
+    <string name="add_your_evidence">Add your evidence</string>
+    <string name="add_location">Add location</string>
+    <string name="submit">Submit</string>
 </resources>

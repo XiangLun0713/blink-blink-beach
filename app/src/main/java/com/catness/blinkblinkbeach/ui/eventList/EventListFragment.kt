@@ -45,6 +45,7 @@ class EventListFragment : Fragment(R.layout.fragment_event_list) {
         searchView.queryHint = Html.fromHtml("<font color = #fafafa>Search by name...</font>")
         val editText = searchView.findViewById(androidx.appcompat.R.id.search_src_text) as EditText
         editText.setTextColor(getResources().getColor(R.color.md_theme_light_onPrimary))
+        searchView.maxWidth = Integer.MAX_VALUE
 
         searchView.onQueryTextChanged {
             viewModel.searchQuery.value = it

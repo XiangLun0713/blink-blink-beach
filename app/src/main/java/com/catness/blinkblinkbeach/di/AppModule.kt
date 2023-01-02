@@ -8,6 +8,8 @@ import com.catness.blinkblinkbeach.data.repositories.home.HomeRepository
 import com.catness.blinkblinkbeach.data.repositories.home.HomeRepositoryImpl
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepository
 import com.catness.blinkblinkbeach.data.repositories.main.MainRepositoryImpl
+import com.catness.blinkblinkbeach.data.repositories.notification.NotificationRepository
+import com.catness.blinkblinkbeach.data.repositories.notification.NotificationRepositoryImpl
 import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepository
 import com.catness.blinkblinkbeach.data.repositories.profile.ProfileRepositoryImpl
 import com.catness.blinkblinkbeach.data.repositories.report.ReportRepository
@@ -59,6 +61,11 @@ object AppModule {
     @Singleton
     fun provideProfileRepository(profileRepositoryImpl: ProfileRepositoryImpl): ProfileRepository =
         profileRepositoryImpl
+
+    @Provides
+    @Singleton
+    fun provideNotificationRepository(notificationRepositoryImpl: NotificationRepositoryImpl): NotificationRepository =
+        notificationRepositoryImpl
 
     @Provides
     @Singleton

@@ -90,6 +90,8 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
                 viewModel.apiState.collect { event ->
                     when (event) {
                         is APIState.Error -> {
+                            // enable the button
+                            eventRegisterButton.isClickable = true
                             // hide the circular progress indicator
                             eventDetailProgressCardView.visibility = View.INVISIBLE
                             // display error toast message
@@ -102,6 +104,8 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
                         is APIState.Loading -> {
                             // show the circular progress indicator
                             eventDetailProgressCardView.visibility = View.VISIBLE
+                            // disable the button
+                            eventRegisterButton.isClickable = false
                         }
                         is APIState.Success -> {
                             // hide the circular progress indicator

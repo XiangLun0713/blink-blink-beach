@@ -136,8 +136,8 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
                         Come join this beach cleanup event to make this beach in Malaysia Blink Blink✨✨✨!
                         
                         Event: ${eventHeaderTitleTextView.text}
-                        Date: ${eventDateTextView.text}
-                        Time: ${eventTimeTextView.text}
+                        ${eventDateTextView.text}
+                        ${eventTimeTextView.text}
                         Venue: ${eventAddressTextView.text}
                         Details: ${eventDetailTextView.text}
                         Maps Location: https://www.google.com/maps/search/?api=1&query=${event.latitude},${event.longitude}

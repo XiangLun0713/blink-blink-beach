@@ -69,4 +69,5 @@
     <string name="select_image_from_camera">select image from camera</string>
     <string name="select_image_from_gallery">select image from gallery</string>
     <string name="pick_location">pick location</string>
+    <string name="share_event_icon">share event icon</string>
 </resources>

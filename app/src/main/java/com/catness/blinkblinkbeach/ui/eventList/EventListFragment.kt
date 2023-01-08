@@ -24,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class EventListFragment : Fragment(R.layout.fragment_event_list) {
 
     private val viewModel: HomeViewModel by viewModels()
+    private lateinit var binding: FragmentEventListBinding
 
     companion object {
         const val DATE = "Date"
@@ -42,9 +43,14 @@ class EventListFragment : Fragment(R.layout.fragment_event_list) {
 
         val searchItem = menu.findItem(R.id.action_search)
         val searchView = searchItem.actionView as SearchView
+        if (!viewModel.searchQuery.value.isEmpty()) searchView.setIconified(false)
         searchView.queryHint = Html.fromHtml("<font color = #fafafa>Search by name...</font>")
-        val editText = searchView.findViewById(androidx.appcompat.R.id.search_src_text) as EditText
-        editText.setTextColor(getResources().getColor(R.color.md_theme_light_onPrimary))
+
+        val searchViewEditText =
+            searchView.findViewById(androidx.appcompat.R.id.search_src_text) as EditText
+        searchViewEditText.setTextColor(getResources().getColor(R.color.md_theme_light_onPrimary))
+        searchViewEditText.setText(viewModel.searchQuery.value)
+        searchViewEditText.setSelection(searchViewEditText.length())
         searchView.maxWidth = Integer.MAX_VALUE
 
         searchView.onQueryTextChanged {
@@ -54,7 +60,7 @@ class EventListFragment : Fragment(R.layout.fragment_event_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentEventListBinding.bind(view)
+        binding = FragmentEventListBinding.bind(view)
 
         binding.apply {
 
@@ -113,6 +119,21 @@ class EventListFragment : Fragment(R.layout.fragment_event_list) {
 
     override fun onResume() {
         super.onResume()
+        // set up the auto complete text view
+        val options = arrayOf(DATE, NAME)
+        val autoCompleteTextView = (binding.sortByTextView as? MaterialAutoCompleteTextView)
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
+            viewModel.preferencesFlow.collect { sortOrder ->
+                autoCompleteTextView?.setText(
+                    if (sortOrder == SortOrder.BY_NAME) {
+                        "Name"
+                    } else {
+                        "Date"
+                    }, false)
+            }
+        }
+        autoCompleteTextView?.setSimpleItems(options)
+
         requireActivity().invalidateOptionsMenu()
     }
 }

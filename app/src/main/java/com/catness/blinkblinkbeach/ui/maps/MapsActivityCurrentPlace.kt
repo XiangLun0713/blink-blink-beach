@@ -89,11 +89,25 @@ class MapsActivityCurrentPlace : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(map: GoogleMap) {
         this.map = map
 
+
         getLocationPermission()
 
         updateLocationUI()
 
         getDeviceLocation()
+
+        map.setOnMyLocationButtonClickListener {
+            getDeviceLocation()
+            false
+        }
+
+        map.setOnMapClickListener {
+            map.clear()
+            marker = map.addMarker(
+                MarkerOptions().position(it)
+                    .title("Selected Location based on current location")
+            )
+        }
     }
 
     @SuppressLint("MissingPermission")

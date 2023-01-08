@@ -1,6 +1,7 @@
 package com.catness.blinkblinkbeach.ui.eventDetail
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ScrollView
@@ -125,6 +126,29 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
                         }
                     }
                 }
+            }
+
+            shareBtn.setOnClickListener {
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(
+                        Intent.EXTRA_TEXT, """
+                        Come join this beach cleanup event to make this beach in Malaysia Blink Blink✨✨✨!
+                        
+                        Event: ${eventHeaderTitleTextView.text}
+                        ${eventDateTextView.text}
+                        ${eventTimeTextView.text}
+                        Venue: ${eventAddressTextView.text}
+                        Details: ${eventDetailTextView.text}
+                        Maps Location: https://www.google.com/maps/search/?api=1&query=${event.latitude},${event.longitude}
+                        
+                        Download the app BlinkBlinkBeach to register for the event now!
+                    """.trimIndent()
+                    )
+                    type = "text/plain"
+                }
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
             }
         }
     }

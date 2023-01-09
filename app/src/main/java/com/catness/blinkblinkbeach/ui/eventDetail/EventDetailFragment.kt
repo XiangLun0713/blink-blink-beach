@@ -132,18 +132,16 @@ class EventDetailFragment : Fragment(R.layout.fragment_event_detail), OnMapReady
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
                     putExtra(
-                        Intent.EXTRA_TEXT, """
-                        Come join this beach cleanup event to make this beach in Malaysia Blink Blink✨✨✨!
+                        Intent.EXTRA_TEXT, "Come join this beach cleanup event to make this beach in Malaysia Blink Blink✨✨✨!\n\n" +
                         
-                        Event: ${eventHeaderTitleTextView.text}
-                        ${eventDateTextView.text}
-                        ${eventTimeTextView.text}
-                        Venue: ${eventAddressTextView.text}
-                        Details: ${eventDetailTextView.text}
-                        Maps Location: https://www.google.com/maps/search/?api=1&query=${event.latitude},${event.longitude}
+                        "Event: ${eventHeaderTitleTextView.text}\n" +
+                        "${eventDateTextView.text}\n" +
+                        "${eventTimeTextView.text}\n" +
+                        "Venue: ${eventAddressTextView.text}\n" +
+                        "Details: ${eventDetailTextView.text}\n" +
+                        "Maps Location: https://www.google.com/maps/search/?api=1&query=${event.latitude},${event.longitude}\n\n" +
                         
-                        Download the app BlinkBlinkBeach to register for the event now!
-                    """.trimIndent()
+                        "Download the app BlinkBlinkBeach to register for the event now!"
                     )
                     type = "text/plain"
                 }

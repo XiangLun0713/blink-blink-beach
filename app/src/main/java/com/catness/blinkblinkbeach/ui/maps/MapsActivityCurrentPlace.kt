@@ -92,8 +92,6 @@ class MapsActivityCurrentPlace : AppCompatActivity(), OnMapReadyCallback {
 
         getLocationPermission()
 
-        updateLocationUI()
-
         getDeviceLocation()
 
         map.setOnMyLocationButtonClickListener {
